@@ -9,7 +9,7 @@ class WeatherSearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Search a city",
         ),
         foregroundColor: Colors.white,
@@ -24,7 +24,7 @@ class WeatherSearchPage extends StatelessWidget {
               getWeatherCubit.getWeather(cityName: value);
               Navigator.pop(context);
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               contentPadding:
                   EdgeInsets.symmetric(vertical: 32, horizontal: 10),
               border: OutlineInputBorder(

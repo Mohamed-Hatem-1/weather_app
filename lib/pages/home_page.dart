@@ -15,13 +15,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 50),
+        preferredSize: const Size(double.infinity, 50),
         child: BlocBuilder<GetWeatherCubit, WeatherState>(
             builder: (context, state) {
           return AppBar(
             elevation: 5,
             shadowColor: Colors.black,
-            title: Text(
+            title: const Text(
               "Weather App",
             ),
             foregroundColor: Colors.white,
@@ -35,10 +35,10 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WeatherSearchPage(),
+                        builder: (context) => const WeatherSearchPage(),
                       ));
                 },
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 color: Colors.white,
               )
             ],
@@ -47,16 +47,17 @@ class HomePage extends StatelessWidget {
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
-          if (state is WeatherInitialState)
-            return NoWeatherWidget();
-          else if (state is WeatherLoadedSuccessfullyState)
+          if (state is WeatherInitialState) {
+            return const NoWeatherWidget();
+          } else if (state is WeatherLoadedSuccessfullyState) {
             return WeatherInfo(
               weather: state.weatherModel,
             );
-          else
-            return Center(
-              child: Text("oops, There is an error"),
+          } else {
+            return const Center(
+              child: Text("Something went wrong, please try again"),
             );
+          }
         },
       ),
     );
